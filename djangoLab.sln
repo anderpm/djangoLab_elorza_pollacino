@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "djangoLab", "djangoLab\djangoLab.pyproj", "{D95B64EC-B579-432A-AE24-749FA8EA7E1E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D95B64EC-B579-432A-AE24-749FA8EA7E1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D95B64EC-B579-432A-AE24-749FA8EA7E1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D95B64EC-B579-432A-AE24-749FA8EA7E1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D95B64EC-B579-432A-AE24-749FA8EA7E1E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {06D0CF31-6CCA-46E3-A00A-3E30306A1952}
+	EndGlobalSection
+EndGlobal
