@@ -47,7 +47,8 @@
     <Compile Include="djangoLab\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="filmenGunea\templates\filmen gunea\index.html" />
+    <Content Include="filmenGunea\templates\filmenGunea\index.html" />
+    <Content Include="filmenGunea\templates\filmenGunea\register.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
@@ -55,7 +56,7 @@
     <Folder Include="filmenGunea\" />
     <Folder Include="filmenGunea\migrations\" />
     <Folder Include="filmenGunea\templates\" />
-    <Folder Include="filmenGunea\templates\filmen gunea\" />
+    <Folder Include="filmenGunea\templates\filmenGunea\" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
