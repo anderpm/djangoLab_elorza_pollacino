@@ -1,0 +1,15 @@
+.left {
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+    float: left;
+    margin-bottom: 20px;
+    background-color:chartreuse;
+}
+
+.right {
+    margin-top: 1%;
+    margin-right: 1%;
+    margin-bottom: 1%;
+    float: right;
+}

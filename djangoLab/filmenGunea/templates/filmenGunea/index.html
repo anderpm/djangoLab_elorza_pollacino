@@ -1,12 +1,27 @@
 <html>
 <head>
     <title>Hasiera</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'filmenGunea/index.css' %}" />
 </head>
 
 <body>
 
-    <a href="{% url 'register' %}">Erregistratu</a>
+    <h1>Filmen gunea</h1>
 
+    <b>Aukerak</b><br>
+    <a href="{% url 'register' %}">Erregistratu</a><br>
+    <a href="{% url 'login' %}">Sartu</a><br>
+
+    <div class="container">
+            <div class="left">
+                <a>aaaaa</a>
+            </div>
+            <div class="right">
+                <a>bbbbb</a>
+            </div>
+    </div>
     {{ content }}
 
 </body>

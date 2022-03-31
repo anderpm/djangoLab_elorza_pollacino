@@ -7,3 +7,6 @@ def index(request):
 
 def register(request):
     return render(request, 'filmenGunea/register.html')
+
+def login(request):
+    return render(request, 'filmenGunea/login.html')
