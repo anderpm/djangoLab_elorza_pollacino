@@ -10,3 +10,12 @@ def register(request):
 
 def login(request):
     return render(request, 'filmenGunea/login.html')
+
+def filmakIkusi(request):
+    return render(request, 'filmenGunea/filmakIkusi.html')
+
+def bozkatu(request):
+    return render(request, 'filmenGunea/bozkatu.html')
+
+def zaleak(request):
+    return render(request, 'filmenGunea/zaleak.html')

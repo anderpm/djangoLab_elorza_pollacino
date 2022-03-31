@@ -1,15 +1,16 @@
 .left {
-    margin-top: 20px;
-    margin-left: 20px;
-    margin-bottom: 20px;
+    height: 60%;
+    width: 20%;
     float: left;
-    margin-bottom: 20px;
-    background-color:chartreuse;
+    background-color:azure;
 }
 
 .right {
-    margin-top: 1%;
-    margin-right: 1%;
-    margin-bottom: 1%;
+    height: 60%;
+    width: 80%;
     float: right;
+}
+
+.titulua{
+    color:green;
 }

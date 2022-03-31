@@ -48,9 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="filmenGunea\static\filmenGunea\index.css" />
+    <Content Include="filmenGunea\templates\filmenGunea\bozkatu.html" />
+    <Content Include="filmenGunea\templates\filmenGunea\filmakIkusi.html" />
     <Content Include="filmenGunea\templates\filmenGunea\index.html" />
     <Content Include="filmenGunea\templates\filmenGunea\login.html" />
     <Content Include="filmenGunea\templates\filmenGunea\register.html" />
+    <Content Include="filmenGunea\templates\filmenGunea\zaleak.html" />
     <Content Include="requirements.txt" />
   </ItemGroup>
   <ItemGroup>
