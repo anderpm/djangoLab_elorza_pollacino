@@ -1,0 +1,17 @@
+.loginLeft {
+    width: 20%;
+    height: 60%;
+    float: left;
+    background-color: burlywood;
+}
+
+.loginRight {
+    height: 60%;
+    width: 80%;
+    float: right;
+    background-color:blueviolet;
+}
+
+.titulua{
+    color:burlywood;
+}

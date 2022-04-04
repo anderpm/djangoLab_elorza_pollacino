@@ -47,6 +47,7 @@
     <Compile Include="djangoLab\wsgi.py" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="filmenGunea\static\filmenGunea\login.css" />
     <Content Include="filmenGunea\static\filmenGunea\index.css" />
     <Content Include="filmenGunea\templates\filmenGunea\bozkatu.html" />
     <Content Include="filmenGunea\templates\filmenGunea\filmakIkusi.html" />

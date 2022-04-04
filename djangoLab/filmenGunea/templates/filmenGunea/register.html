@@ -2,10 +2,31 @@
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8" />
-    <title>erregistratu</title>
+    <title>register</title>
+
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'filmenGunea/index.css' %}" />
 </head>
 <body>
+
+    <h1 class="titulua">Filmen gunea</h1>
+
+    <div class="container">
+        <div class="left">
+            <b>Aukerak</b>
+            <ul>
+                <li> 
+                    <a href="{% url 'login' %}">Sartu</a>
+                </li>
+                <li>
+                    <a href="{% url 'register' %}">Erregistratu</a>
+                </li>
+            </ul>
+        </div>
+        <div class="right">
+
+        </div>
+    </div>
 
 </body>
 </html>
