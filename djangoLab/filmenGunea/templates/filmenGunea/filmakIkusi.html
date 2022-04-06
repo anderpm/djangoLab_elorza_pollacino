@@ -1,36 +1,1 @@
-<!DOCTYPE html>
-
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>filmakIkusi</title>
-
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'filmenGunea/index.css' %}" />
-</head>
-<body>
-
-    <h1 class="titulua">Filmen gunea</h1>
-
-    <div class="container">
-        <div class="left">
-            <b>Aukerak</b>
-            <ul>
-                <li> 
-                    <a href="{% url 'filmakIkusi' %}">Filmak ikusi</a>
-                </li>
-                <li>
-                    <a href="{% url 'bozkatu' %}">Bozkatu</a>
-                </li>
-                <li>
-                    <a href="{% url 'zaleak' %}">Zaleak</a>
-                </li>
-            </ul>
-        </div>
-        <div class="right">
-
-        </div>
-    </div>
-
-</body>
-</html>
+{% extends "./filmenAtalaTxantiloia.html" %}{% block titulua %}    <title>filmakIkusi</title>{% endblock %}
