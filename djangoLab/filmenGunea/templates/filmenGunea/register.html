@@ -1,18 +1,13 @@
 {% extends "./erabiltzaileenAtalaTxantiloia.html" %}
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title>erregistratu</title>
-</head>
-<body>
-<form action="" method="post">
+{% block titulua %}
+    <title>register</title>
+{% endblock %}
+
+{% block formularioa %}
+    <form action="" method="post">
     {{form}}
     <input type="submit" value="Submit" />
 </form>
-</body>
-</html>
-{% block titulua %}
-    <title>register</title>
 {% endblock %}
 
