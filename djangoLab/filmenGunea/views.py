@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from .forms import RegisterForm
+from .forms import RegisterForm, LoginForm
 
 
 def index(request):
@@ -17,8 +17,14 @@ def register(request):
     return render(request, 'filmenGunea/register.html',{'form':form})
 
 def login(request):
+    if request.method=='POST':
+        form=LoginForm(request.POST)
+        if form.is_valid():
+            a=1
+    else:
+        form=LoginForm()
     
-    return render(request, 'filmenGunea/login.html')
+    return render(request, 'filmenGunea/login.html',{'form':form})
 
 def filmakIkusi(request):
     return render(request, 'filmenGunea/filmakIkusi.html')
