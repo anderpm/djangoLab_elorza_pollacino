@@ -6,7 +6,8 @@
 
 {% block formularioa %}
     <form action="" method="post">
-    {{form}}
+        {% csrf_token %}
+        {{form.as_p}}
     <input type="submit" value="Submit" />
 </form>
 {% endblock %}

@@ -1,6 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from .forms import RegisterForm, LoginForm
+from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth.models import User
+
 
 
 def index(request):
@@ -8,9 +11,16 @@ def index(request):
 
 def register(request):
     if request.method=='POST':
-        form=RegisterForm(request.POST)
-        if form.is_valid():
-            a=1
+        erabil = request.POST['user']
+        pasahitza1 = request.POST['pass1']
+        pasahitza2 = request.POST['pass2']
+        if pasahitza1==pasahitza2:
+            user = authenticate(username=erabil,password=pasahitza1)
+            if user is None:
+              us=User.objects.create_user(erabil,email=None,password= pasahitza1)
+              us.save()
+              redirect('')
+            
     else:
         form=RegisterForm()
             
