@@ -21,7 +21,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
-    path('filmenGunea/', include('filmenGunea.urls')),
+    path('', include('filmenGunea.urls')),
 
     # Uncomment the next line to enable the admin:
     path('admin/', admin.site.urls),
