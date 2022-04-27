@@ -3,6 +3,8 @@ from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from .forms import RegisterForm, LoginForm
+from filmenGunea.models import Filma, Bozkatzailea
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 
 def index(request):
@@ -64,7 +66,20 @@ def login(request):
         return render(request, 'filmenGunea/login.html',{'form':form})
 
 def filmakIkusi(request):
-    return render(request, 'filmenGunea/filmakIkusi.html')
+    filmak = Filma.objects.all()
+
+    paginator = Paginator(filmak, 4) # Show 4 films per page
+    page = request.GET.get('page')
+    try:
+        filmak = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        filmak = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        filmak = paginator.page(paginator.num_pages)
+
+    return render(request, 'filmenGunea/filmakIkusi.html', {'filmak': filmak})
 
 def bozkatu(request):
     return render(request, 'filmenGunea/bozkatu.html')
