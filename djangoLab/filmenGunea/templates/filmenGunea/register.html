@@ -8,6 +8,9 @@
     <form action="" method="post">
         {% csrf_token %}
         {{form.as_p}}
+        {% if error %}
+        <span stle="color:red;">{{errorea}}</span>
+        {% endif %}
     <input type="submit" value="Submit" />
 </form>
 {% endblock %}
