@@ -53,6 +53,7 @@ def login(request):
             password=request.POST['password']
             user = authenticate(username=izena, password=password)
             if user is not None:
+                request.session['erabiltzailea'] = 'izena'
                 return render(request,'filmengunea/index.html')
             else:
                 error=True
