@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
 from .forms import RegisterForm, LoginForm
 
@@ -44,9 +45,19 @@ def register(request):
 
 def login(request):
     if request.method=='POST':
+        error=False
+        errorea=""
         form=LoginForm(request.POST)
         if form.is_valid():
-            a=1
+            izena=request.POST['user']
+            password=request.POST['password']
+            user = authenticate(username=izena, password=password)
+            if user is not None:
+                return render(request,'filmengunea/index.html')
+            else:
+                error=True
+                errorea="Erabiltzaile edo pasahitz okerra"
+                return render(request,'filmengunea/login.html',{'form':form, 'errorea':errorea, 'error':error})
     else:
         form=LoginForm()
         return render(request, 'filmenGunea/login.html',{'form':form})

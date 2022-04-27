@@ -5,7 +5,12 @@
 {% endblock %}
 {% block formularioa %}
     <form action="" method="post">
+    {% csrf_token %}
     {{form.as_p}}
+
+    {% if error %}
+    <span style="color:red;">{{errorea}}</span></br>
+    {% endif %}
     <input type="submit" value="Submit" />
 </form>
 {% endblock %}
