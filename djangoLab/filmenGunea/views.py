@@ -6,13 +6,16 @@ from .forms import RegisterForm, LoginForm, BozkatuForm
 from filmenGunea.models import Filma, Bozkatzailea
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
 
 def index(request):
     return render(request, 'filmenGunea/index.html')
 
 def register(request):
-
+    if request.user.is_authenticated:
+        return render(request, 'filmengunea/index.html')
     if request.method=='GET':
         form=RegisterForm()    
         return render(request, 'filmenGunea/register.html',{'form':form})
@@ -47,6 +50,8 @@ def register(request):
     
 
 def login(request):
+    if request.user.is_authenticated:
+        return render(request, 'filmengunea/index.html')
     if request.method=='POST':
         error=False
         errorea=""
@@ -69,6 +74,7 @@ def login(request):
         form=LoginForm()
         return render(request, 'filmenGunea/login.html',{'form':form})
 
+@login_required(login_url=login)
 def filmakIkusi(request):
     filmak = Filma.objects.all()
 
@@ -85,6 +91,7 @@ def filmakIkusi(request):
 
     return render(request, 'filmenGunea/filmakIkusi.html', {'filmak': filmak})
 
+@login_required(login_url=login)
 def bozkatu(request):
     filmak = Filma.objects.all()
     if request.method=='POST':
@@ -111,5 +118,13 @@ def bozkatu(request):
         form=BozkatuForm()
         return render(request, 'filmenGunea/bozkatu.html', {'form':form, 'filmak': filmak})
 
+@login_required(login_url=login)
 def zaleak(request):
     return render(request, 'filmenGunea/zaleak.html')
+
+@login_required(login_url=login)
+def amaituSaioa(request):
+
+    logout(request)
+   
+    return render(request, 'filmenGunea/index.html')

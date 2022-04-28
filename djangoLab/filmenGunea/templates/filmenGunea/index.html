@@ -12,6 +12,7 @@
     <div class="container">
         <div class="left">
             <b>Aukerak</b>
+            {% if user.is_authenticated %}
             <ul>
                 <li> 
                     <a href="{% url 'filmakIkusi' %}">Filmak ikusi</a>
@@ -22,7 +23,21 @@
                 <li>
                     <a href="{% url 'zaleak' %}">Zaleak</a>
                 </li>
+                              
             </ul>
+            <div id="logout">
+                 <a href="{% url 'amaituSaioa' %}">Amaitu Saioa</a>
+            </div>
+            {% else %}
+            <ul>
+                <li> 
+                    <a href="{% url 'login' %}">Sartu</a>
+                </li>
+                <li>
+                    <a href="{% url 'register' %}">Erregistratu</a>
+                </li>
+            </ul>
+            {% endif %}
         </div>
         <div class="right">
 

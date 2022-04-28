@@ -14,3 +14,9 @@
 .titulua{
     color:green;
 }
+
+.left.logout{
+    position:absolute;
+    bottom:0;
+    left:0;
+}
