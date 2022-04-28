@@ -2,9 +2,10 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
-from .forms import RegisterForm, LoginForm
+from .forms import RegisterForm, LoginForm, BozkatuForm
 from filmenGunea.models import Filma, Bozkatzailea
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth import authenticate, login as auth_login
 
 
 def index(request):
@@ -55,7 +56,10 @@ def login(request):
             password=request.POST['password']
             user = authenticate(username=izena, password=password)
             if user is not None:
-                request.session['erabiltzailea'] = 'izena'
+                request.session['erabiltzailea'] = izena
+                auth_login(request, user)
+
+                #request.session['id'] = auth_user.objects.get(username=izena).id
                 return render(request,'filmengunea/index.html')
             else:
                 error=True
@@ -82,7 +86,30 @@ def filmakIkusi(request):
     return render(request, 'filmenGunea/filmakIkusi.html', {'filmak': filmak})
 
 def bozkatu(request):
-    return render(request, 'filmenGunea/bozkatu.html')
+    filmak = Filma.objects.all()
+    if request.method=='POST':
+        form=BozkatuForm(request.POST)
+        hautatutakoa=request.POST['dropdown']
+        filma=Filma.objects.get(izenburua=hautatutakoa)
+        if form.is_valid:
+
+            if Bozkatzailea.objects.filter(erabiltzailea_id=request.user).exists():
+                bozkatzaile=Bozkatzailea.objects.get(erabiltzailea_id=request.user)
+                if not bozkatzaile.gogokofilmak.filter(izenburua=hautatutakoa).exists():  
+                    bozkatzaile.gogokofilmak.add(filma)
+                    filma.bozkak=filma.bozkak+1
+                    filma.save()
+            else:
+                bozkatzaileBerri=Bozkatzailea(erabiltzailea_id=request.user)
+                bozkatzaileBerri.save()
+                bozkatzaileBerri.gogokofilmak.add(filma)
+                filma.bozkak=filma.bozkak+1
+                filma.save()
+        return render(request, 'filmenGunea/bozkatu.html', {'form':form, 'filmak': filmak})
+
+    else:
+        form=BozkatuForm()
+        return render(request, 'filmenGunea/bozkatu.html', {'form':form, 'filmak': filmak})
 
 def zaleak(request):
     return render(request, 'filmenGunea/zaleak.html')

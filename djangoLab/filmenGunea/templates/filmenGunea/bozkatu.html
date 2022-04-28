@@ -3,3 +3,19 @@
 {% block titulua %}
     <title>bozkatu</title>
 {% endblock %}
+
+
+{% block eskubi %}
+    
+    <h1 class="titulua">Bozkatu zure gogoko pelikula</h1>
+    
+    <form action="" method="post">{% csrf_token %}
+        <select id="dropdown" name="dropdown">
+            {% for filma in filmak %}
+                <option value="{{ filma.izenburua }}">{{ filma.izenburua }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Bozkatu" />
+    </form>
+
+{% endblock %}
