@@ -106,13 +106,18 @@ def bozkatu(request):
                     bozkatzaile.gogokofilmak.add(filma)
                     filma.bozkak=filma.bozkak+1
                     filma.save()
+                else:
+                    errorea=1
+                    return render(request, 'filmenGunea/bozkatu.html', {'form':form, 'filmak': filmak, 'error':errorea, 'filma':filma})
             else:
                 bozkatzaileBerri=Bozkatzailea(erabiltzailea_id=request.user)
                 bozkatzaileBerri.save()
                 bozkatzaileBerri.gogokofilmak.add(filma)
                 filma.bozkak=filma.bozkak+1
                 filma.save()
-        return render(request, 'filmenGunea/bozkatu.html', {'form':form, 'filmak': filmak})
+            
+            ondo=1
+            return render(request, 'filmenGunea/bozkatu.html', {'form':form, 'filmak': filmak, 'ondo':ondo, 'filma':filma})
 
     else:
         form=BozkatuForm()
@@ -126,7 +131,7 @@ def zaleak(request):
 
     if request.method=='POST':
         hautatutakoa=request.POST['dropdown']
-        filma=Filma.objects.get(izenburua=hautatutakoa)
+        filma=Filma.objects.get(izenburua=hautatutakoa).izenburua
         
         if form.is_valid:
             bozkatzaileTotLista = Bozkatzailea.objects.all()
@@ -134,7 +139,7 @@ def zaleak(request):
                 if i.gogokofilmak.filter(izenburua=hautatutakoa).exists():
                     bozkatzailea = User.objects.get(username=i.erabiltzailea_id.username)
                     filmarenBozkatzaileak.append(bozkatzailea)
-            return render(request, 'filmenGunea/zaleak.html', {'form':form, 'filmak': filmak, 'bozkatzaileak':filmarenBozkatzaileak})
+            return render(request, 'filmenGunea/zaleak.html', {'form':form, 'filmak': filmak, 'bozkatzaileak':filmarenBozkatzaileak, 'filma':filma})
 
     return render(request, 'filmenGunea/zaleak.html', {'form':form, 'filmak': filmak})
 

@@ -14,11 +14,18 @@
             {% for i in filmak %}
                 <option value="{{ i.izenburua }}">{{ i.izenburua }}</option>
             {% endfor %}
-        </select>
-        <input type="submit" value="Erakutsi zaleak" />
+        </select><br/><br/>
+
+        <input type="submit" value="Erakutsi zaleak"/>
     </form>
 
     {% if bozkatzaileak %}
+        <br/>
+        {% if filma %}
+            <strong>{{filma}}</strong><a>-ren zaleak:</a>
+        {% endif %}
+
+        <br/>
         <table border="1">
         <tr class="Goiburuak">
             <th>Zaleak</th>

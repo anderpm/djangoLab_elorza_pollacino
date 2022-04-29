@@ -14,8 +14,17 @@
             {% for i in filmak %}
                 <option value="{{ i.izenburua }}">{{ i.izenburua }}</option>
             {% endfor %}
-        </select>
-        <input type="submit" value="Bozkatu" />
+        </select><br/><br/>
+        
+        <input type="submit" value="Bozkatu"/>
     </form>
+
+    <br/>
+    {% if error %}
+        <strong>{{filma.izenburua}} dagoeneko bozkatu duzu!</strong>
+    {% elif ondo %}
+        <strong>Bozketa ongi burutu da.</strong><br/>
+        <strong>Zure bozka: </strong><a>{{filma.izenburua}}</a>
+    {% endif %}
 
 {% endblock %}
