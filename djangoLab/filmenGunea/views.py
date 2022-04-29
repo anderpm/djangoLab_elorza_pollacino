@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
@@ -44,8 +44,8 @@ def register(request):
                 else:
                     #berdinak badira
                     User.objects.create_user(user,email=None, password=pass1)
-                    form = LoginForm()
-                    return render(request, 'filmenGunea/login.html',{'form': form})
+                    
+                    return redirect('/login')
     
     
 
@@ -65,7 +65,8 @@ def login(request):
                 auth_login(request, user)
 
                 #request.session['id'] = auth_user.objects.get(username=izena).id
-                return render(request,'filmengunea/index.html')
+                #return render(request,'filmengunea/index.html')
+                return redirect('/')
             else:
                 error=True
                 errorea="Erabiltzaile edo pasahitz okerra"
@@ -142,4 +143,5 @@ def amaituSaioa(request):
 
     logout(request)
    
-    return render(request, 'filmenGunea/index.html')
+    #return render(request, 'filmenGunea/index.html')
+    return redirect('/')
