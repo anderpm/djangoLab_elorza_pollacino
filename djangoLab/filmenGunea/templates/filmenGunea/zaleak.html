@@ -3,3 +3,32 @@
 {% block titulua %}
     <title>zaleak</title>
 {% endblock %}
+
+
+{% block eskubi %}
+    
+    <h1 class="titulua">Zaleak</h1>
+    
+    <form action="" method="post">{% csrf_token %}
+        <select id="dropdown" name="dropdown">
+            {% for i in filmak %}
+                <option value="{{ i.izenburua }}">{{ i.izenburua }}</option>
+            {% endfor %}
+        </select>
+        <input type="submit" value="Erakutsi zaleak" />
+    </form>
+
+    {% if bozkatzaileak %}
+        <table border="1">
+        <tr class="Goiburuak">
+            <th>Zaleak</th>
+        </tr>
+        {% for i in bozkatzaileak %}
+        <tr>
+            <td>{{i.username}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+{% endblock %}

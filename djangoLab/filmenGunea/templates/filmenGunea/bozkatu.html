@@ -11,8 +11,8 @@
     
     <form action="" method="post">{% csrf_token %}
         <select id="dropdown" name="dropdown">
-            {% for filma in filmak %}
-                <option value="{{ filma.izenburua }}">{{ filma.izenburua }}</option>
+            {% for i in filmak %}
+                <option value="{{ i.izenburua }}">{{ i.izenburua }}</option>
             {% endfor %}
         </select>
         <input type="submit" value="Bozkatu" />

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
-from .forms import RegisterForm, LoginForm, BozkatuForm
+from .forms import RegisterForm, LoginForm, BozkatuForm, ZaleakForm
 from filmenGunea.models import Filma, Bozkatzailea
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth import authenticate, login as auth_login
@@ -99,7 +99,6 @@ def bozkatu(request):
         hautatutakoa=request.POST['dropdown']
         filma=Filma.objects.get(izenburua=hautatutakoa)
         if form.is_valid:
-
             if Bozkatzailea.objects.filter(erabiltzailea_id=request.user).exists():
                 bozkatzaile=Bozkatzailea.objects.get(erabiltzailea_id=request.user)
                 if not bozkatzaile.gogokofilmak.filter(izenburua=hautatutakoa).exists():  
@@ -120,7 +119,23 @@ def bozkatu(request):
 
 @login_required(login_url=login)
 def zaleak(request):
-    return render(request, 'filmenGunea/zaleak.html')
+    filmak = Filma.objects.all()
+    filmarenBozkatzaileak = []
+    form=ZaleakForm(request.POST)
+
+    if request.method=='POST':
+        hautatutakoa=request.POST['dropdown']
+        filma=Filma.objects.get(izenburua=hautatutakoa)
+        
+        if form.is_valid:
+            bozkatzaileTotLista = Bozkatzailea.objects.all()
+            for i in bozkatzaileTotLista:
+                if i.gogokofilmak.filter(izenburua=hautatutakoa).exists():
+                    bozkatzailea = User.objects.get(username=i.erabiltzailea_id.username)
+                    filmarenBozkatzaileak.append(bozkatzailea)
+            return render(request, 'filmenGunea/zaleak.html', {'form':form, 'filmak': filmak, 'bozkatzaileak':filmarenBozkatzaileak})
+
+    return render(request, 'filmenGunea/zaleak.html', {'form':form, 'filmak': filmak})
 
 @login_required(login_url=login)
 def amaituSaioa(request):

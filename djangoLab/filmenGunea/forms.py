@@ -18,3 +18,7 @@ class LoginForm(forms.Form):
 
 class BozkatuForm(forms.Form):
     filmak = forms.CharField(label='Filmak',max_length=20,required=True)
+
+
+class ZaleakForm(forms.Form):
+    filmak = forms.CharField(label='Filmak',max_length=20,required=True)
